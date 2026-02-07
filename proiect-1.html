@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1011 Design Lab | Apartament N.ORD</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <section class="container" style="padding-top: 150px; padding-bottom: 100px;">
+        
+        <div class="project-header-center animate-block">
+            <span style="color: var(--accent-color); font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Interior Design</span>
+            <h1 class="section-title" style="margin-top: 15px;">Apartament N.ORD</h1>
+        </div>
+
+        <div class="meta-grid-horizontal animate-block delay-1">
+            <div class="meta-box">
+                <strong>Locație</strong>
+                <span>București</span>
+            </div>
+            <div class="meta-box">
+                <strong>Suprafață</strong>
+                <span>85 mp</span>
+            </div>
+            <div class="meta-box">
+                <strong>An</strong>
+                <span>2024</span>
+            </div>
+            <div class="meta-box">
+                <strong>Status</strong>
+                <span>Finalizat</span>
+            </div>
+        </div>
+
+        <div class="text-block-center animate-block delay-2">
+            <p>
+                Conceptul acestui apartament a plecat de la dorința beneficiarilor de a avea un spațiu fluid, aerisit, unde lumina naturală joacă rolul principal. Am ales o paletă cromatică neutră, dominată de tonuri de grej și alb, punctată de accente de lemn natural și metal negru.
+            </p>
+        </div>
+
+        <div class="image-stack">
+            <div class="img-wrapper animate-block" style="height: auto; overflow: visible;">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=90" alt="Living">
+            </div>
+            <div class="img-wrapper animate-block" style="height: auto; overflow: visible;">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=90" alt="Detaliu">
+            </div>
+            <div class="img-wrapper animate-block" style="height: auto; overflow: visible;">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=90" alt="Dining">
+            </div>
+            <div class="img-wrapper animate-block" style="height: auto; overflow: visible;">
+                <img src="https://images.unsplash.com/photo-1595524366670-5b51c2d68a02?auto=format&fit=crop&w=1400&q=90" alt="Bucatarie">
+            </div>
+            <div class="img-wrapper animate-block" style="height: auto; overflow: visible;">
+                <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1400&q=90" alt="Baie">
+            </div>
+        </div>
+
+        <div class="text-block-center animate-block">
+            <h3 style="text-align:center; margin-bottom: 20px;">Zona de Noapte</h3>
+            <p>
+                Dormitorul a fost tratat ca un sanctuar de liniște. Am redus paleta de materiale la minim: parchet din stejar, pereți texturati cu vopsea decorativă și draperii din in natural. Iluminatul ambiental creează scenografii diferite pentru seară.
+            </p>
+        </div>
+
+        <div class="image-stack">
+            <div class="img-wrapper animate-block" style="height: auto; overflow: visible;">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=90" alt="Dormitor">
+            </div>
+            <div class="img-wrapper animate-block" style="height: auto; overflow: visible;">
+                <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1400&q=90" alt="Baie Matrimoniala">
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid #eee; padding: 50px 0; text-align: center; margin-top: 80px;">
+            <a href="proiect-2.html" class="link-arrow" style="font-size: 1.2rem;">Următorul Proiect &rarr;</a>
+        </div>
+
+    </section>
+
+   <div id="footer-placeholder"></div>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        const header = document.getElementById('main-header');
+        if(header) header.classList.add('scrolled');
+
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.animate-block');
+            elements.forEach(el => el.classList.add('is-visible'));
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-block').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,790 @@
+/* 1. IMPORT FONTURI */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+/* 2. RESETARE GENERALA */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --accent-color: #9e2a2b;
+    --text-color: #1a1a1a;
+    --bg-color: #ffffff;
+    --font-main: 'Montserrat', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Fara scroll stanga-dreapta */
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+img { display: block; width: 100%; }
+ul { list-style: none; }
+
+/* 3. HEADER & NAVIGATIE */
+header {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    background: transparent;
+    transition: 0.4s;
+}
+
+/* Cand dam scroll devine alb */
+header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px 0;
+}
+/* Textul din meniu e alb la inceput (pe poza) si negru la scroll */
+header { color: white; }
+header.scrolled { color: #1a1a1a; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+.logo span { color: var(--accent-color); font-family: var(--font-serif); font-style: italic; text-transform: lowercase; font-weight: 400;}
+
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; font-weight: 500; }
+.nav-links a:hover { color: var(--accent-color); }
+
+/* =========================================
+   4. HERO SECTION (FIX "Dungi Albe")
+   ========================================= */
+
+.hero-fullscreen {
+    /* Inaltimea ecranului */
+    height: 100vh; 
+    /* Truc pentru mobil modern: dvh se adapteaza la bara de browser */
+    height: 100dvh; 
+    
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    
+    /* CRUCIAL: Asta taie marginile imaginii care sunt "prea mari" */
+    overflow: hidden; 
+    margin: 0; padding: 0;
+}
+
+/* Imaginea de fundal */
+.hero-bg-img {
+    position: absolute;
+    /* Facem imaginea MAI MARE decat ecranul (120%) ca sa acopere orice margine */
+    top: -10%; left: -10%;
+    width: 120%; height: 120%; 
+    
+    background-size: cover;
+    background-position: center;
+    z-index: -2; /* In spatele tuturor */
+    
+    /* Animatia de zoom fin */
+    animation: zoomEffect 20s infinite alternate;
+}
+
+/* Animatia (trebuie sa fie definita ca sa mearga) */
+@keyframes zoomEffect {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Filtrul Negru/Gri de deasupra */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%; /* Acesta ramane fix pe ecran */
+    background: rgba(0,0,0,0.3); /* Intunecare fina */
+    z-index: -1;
+}
+
+/* Textul din Hero */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+
+/* 5. SECTIUNE PROIECTE (REPARATIA PENTRU IMAGINI) */
+.section-padding { padding: 100px 0; }
+.section-title { font-size: 2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; color: #1a1a1a; }
+.divider { width: 60px; height: 1px; background: #1a1a1a; margin: 0 auto 60px; }
+.text-center { text-align: center; }
+
+/* GRILA 2x2 */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Coloane egale */
+    gap: 40px; /* Spatiu intre ele */
+}
+
+.project-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
+/* Cutia imaginii - FIXEAZA INALTIMEA */
+.img-wrapper {
+    height: 500px; /* Inaltime fixa obligatorie */
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Ascunde ce iese afara */
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Umple cadrul perfect fara sa deformeze */
+    transition: transform 0.6s ease;
+}
+
+/* Efect Hover */
+.project-card:hover .img-wrapper img { transform: scale(1.05); }
+
+/* Textul de pe poza */
+.info-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    opacity: 0; transition: 0.4s;
+    transform: translateY(20px);
+}
+.project-card:hover .info-overlay { opacity: 1; transform: translateY(0); }
+
+.info-overlay h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 5px; }
+.info-overlay .category { color: var(--accent-color); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+
+/* Link vezi toate */
+.link-arrow { border-bottom: 1px solid transparent; padding-bottom: 2px; font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; color: #1a1a1a;}
+.link-arrow:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
+
+/* Animatii simple */
+.animate-block { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+.animate-block.is-visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.2s; }
+
+footer { text-align: center; padding: 40px; background: #f4f4f4; margin-top: 50px; font-size: 0.8rem; color: #666; }
+
+/* =========================================
+   6. RESPONSIVE & MOBILE MENU (COD UNIFICAT)
+   ========================================= */
+
+/* STIL BURGER (Butonul in sine) */
+.burger {
+    display: none; /* Ascuns pe desktop */
+    cursor: pointer;
+    z-index: 1001; /* Peste meniu */
+}
+.burger div {
+    width: 25px; height: 3px; 
+    background-color: #333; /* Linii negre default */
+    margin: 5px; 
+    transition: 0.3s;
+}
+
+/* REGULI PENTRU TELEFON SI TABLETA */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Ajustari Generale */
+    .hero-text h1 { font-size: 2.5rem; }
+    .project-grid { grid-template-columns: 1fr; } /* 1 coloana la proiecte */
+    .img-wrapper { height: 400px; }
+    .nav-links { display: none; } /* Ascundem meniul desktop standard */
+
+    /* 2. Aratam Burgerul */
+    .burger { display: block; }
+
+    /* 3. Stilul Meniului Mobil (Sertarul care iese din dreapta) */
+    .nav-links {
+        position: absolute; 
+        right: 0; 
+        height: 92vh; 
+        top: 8vh;
+        background-color: #fff; /* Fundal ALB */
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        width: 60%;
+        transform: translateX(100%); /* Ascuns initial in dreapta */
+        transition: transform 0.5s ease-in;
+        z-index: 999; 
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+    
+    /* 4. FIX CRITIC: Textul sa fie NEGRU obligatoriu */
+    .nav-links a { 
+        color: #1a1a1a !important; /* <--- Asta face textul vizibil sus */
+        font-size: 1.2rem;
+        opacity: 1;
+        margin-bottom: 30px; 
+    }
+
+    /* 5. Clasa care activeaza meniul (JS o adauga) */
+    .nav-active { 
+        transform: translateX(0%); 
+        display: flex; /* Ne asiguram ca e vizibil cand e activ */
+    }
+
+    /* 6. Animatia Burgerului (Se face X) */
+    .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+    .toggle .line2 { opacity: 0; }
+    .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+}
+
+/* =========================================
+   7. SECTIUNI NOI (DESPRE & CONTACT HOME)
+   ========================================= */
+
+/* Layout General Stanga-Dreapta */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 coloane egale */
+    gap: 80px;
+    align-items: center;
+}
+
+/* Stil Imagine Despre */
+.split-image {
+    height: 500px;
+    overflow: hidden;
+}
+.split-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Buton tip text cu linie */
+.btn-line {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 5px;
+}
+.btn-line:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* --- CONTACT SECTION --- */
+.contact-details { margin-top: 40px; }
+
+.detail-item { margin-bottom: 30px; }
+
+.detail-item span {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.large-link {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.large-link:hover { color: var(--accent-color); }
+
+.social-icons { display: flex; gap: 20px; }
+.social-icons a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+}
+.social-icons a:hover { border-bottom-color: var(--text-color); }
+
+/* --- FORMULAR STIL MINIMALIST --- */
+.input-group {
+    margin-bottom: 30px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+/* Campurile sunt doar o linie jos */
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: 0.3s;
+    outline: none;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-bottom-color: var(--accent-color);
+}
+
+.btn-submit {
+    background: var(--text-color);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+.btn-submit:hover {
+    background: var(--accent-color);
+}
+
+/* RESPONSIVE PENTRU SECTIUNILE NOI */
+@media (max-width: 900px) {
+    .split-layout {
+        grid-template-columns: 1fr; /* Una sub alta pe mobil */
+        gap: 50px;
+    }
+    .split-image { height: 350px; }
+}
+
+/* =========================================
+   STIL PROIECT VERTICAL (NOXA STYLE)
+   ========================================= */
+
+/* 1. Titlul Centrat */
+.project-header-center {
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/* 2. Grila de Detalii (4 Coloane) */
+.meta-grid-horizontal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 coloane egale */
+    gap: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 30px 0;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.meta-box strong {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.meta-box span {
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: 500;
+}
+
+/* 3. Textul Centrat (Descrierea) */
+.text-block-center {
+    max-width: 700px; /* Mai ingust pentru citire usoara */
+    margin: 0 auto 80px auto; 
+    text-align: justify;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* 4. Imaginile (Una sub alta) */
+.image-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Spatiu intre poze */
+    margin-bottom: 80px;
+}
+
+/* RESPONSIVE (Pe mobil detaliile trec pe 2 randuri) */
+@media (max-width: 768px) {
+    .meta-grid-horizontal {
+        grid-template-columns: 1fr 1fr; 
+        text-align: left;
+        gap: 30px;
+    }
+}
+
+/* =========================================
+   FOOTER "FAT" (Gros & Profesional)
+   ========================================= */
+
+footer {
+    background-color: #1a1a1a; /* Aproape negru */
+    color: #ffffff;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    font-size: 0.9rem;
+    margin-top: 0; /* Scoatem orice margine veche */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    /* 4 Coloane egale */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.footer-col p {
+    color: #999;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #bbb;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--accent-color);
+    padding-left: 5px; /* Mica miscare la dreapta */
+}
+
+/* Footer Bottom (Copyright) */
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Logo in Footer */
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    display: block;
+}
+.footer-logo span { color: var(--accent-color); font-family: var(--font-serif); font-style: italic; }
+
+/* Responsive Footer */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr; /* 2 coloane pe tableta */
+    }
+}
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* 1 coloana pe mobil */
+        text-align: center;
+    }
+}
+
+
+/* STIL BURGER (Adauga in style.css daca lipseste) */
+.burger {
+    display: none; /* Ascuns pe desktop */
+    cursor: pointer;
+}
+.burger div {
+    width: 25px; height: 3px; background-color: #333; margin: 5px; transition: 0.3s;
+}
+
+/* PE MOBIL IL ARATAM */
+@media screen and (max-width: 768px) {
+    .burger { display: block; } 
+    
+    /* Meniul care aluneca */
+    .nav-links {
+        position: absolute; right: 0; height: 92vh; top: 8vh;
+        background-color: #fff;
+        display: flex; flex-direction: column; align-items: center; width: 60%;
+        transform: translateX(100%); transition: transform 0.5s ease-in;
+        z-index: 999; padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+    
+    .nav-active { transform: translateX(0%); }
+    
+    /* Animatie X */
+    .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+    .toggle .line2 { opacity: 0; }
+    .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+}
+
+
+/* =========================================
+   STIL BUTOANE FILTRU (Portofoliu)
+   ========================================= */
+
+.filter-menu {
+    display: flex;
+    justify-content: center; /* Le pune pe mijloc */
+    gap: 40px; /* Spatiu generos intre ele */
+    margin-bottom: 60px;
+    flex-wrap: wrap; /* Pe mobil trec pe randul urmator daca nu incap */
+}
+
+.filter-btn {
+    background: transparent; /* Scoate fundalul gri urat */
+    border: none; /* Scoate chenarul */
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    color: #888; /* Gri discret cand nu e selectat */
+    padding-bottom: 8px;
+    border-bottom: 2px solid transparent; /* Linie invizibila jos */
+    transition: 0.3s;
+    outline: none; /* Scoate conturul albastru la click */
+}
+
+.filter-btn:hover {
+    color: #000; /* Negru la hover */
+}
+
+/* Cand butonul e selectat (Activ) */
+.filter-btn.active {
+    color: var(--accent-color); /* Visiniu */
+    border-bottom: 2px solid var(--accent-color); /* Linie visinie jos */
+    font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .filter-menu {
+        gap: 20px;
+    }
+    .filter-btn {
+        font-size: 0.8rem;
+    }
+}
+
+/* =========================================
+   PAGINA SERVICII (Layout Zig-Zag)
+   ========================================= */
+
+.services-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 120px; /* Spatiu mare intre servicii */
+}
+
+.service-row {
+    display: flex;
+    align-items: center; /* Centreaza vertical textul fata de poza */
+    gap: 60px;
+}
+
+/* Alterneaza directia pentru randurile pare (2, 4...) */
+.service-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.service-image {
+    flex: 1; /* Ocupa jumatate din spatiu */
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-image img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+/* Efect fin de zoom la hover pe poza */
+.service-row:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-content {
+    flex: 1; /* Ocupa cealalta jumatate */
+    padding: 20px;
+}
+
+.service-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.service-content p {
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+/* Lista "Ce include" */
+.service-list-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* Liniuta stilizata in loc de bulina clasica */
+.service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px; /* Aliniat cu mijlocul textului */
+    width: 8px;
+    height: 1px;
+    background-color: var(--accent-color);
+}
+
+/* RESPONSIVE: Pe telefon devine o singura coloana */
+@media (max-width: 900px) {
+    .service-row, .service-row:nth-child(even) {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .service-image {
+        width: 100%;
+        height: 350px;
+    }
+    .services-wrapper {
+        gap: 80px;
+    }
+}
+
+/* =========================================
+   ELEMENTE EXTRA CONTACT (FAQ & Harta)
+   ========================================= */
+
+/* --- 1. FAQ SECTION --- */
+.faq-section {
+    background-color: #fdfbf7; /* Un crem foarte deschis */
+    padding: 80px 0;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.faq-question:hover {
+    color: var(--accent-color);
+}
+
+/* Semnul plus (+) care se roteste */
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active::after {
+    transform: rotate(45deg); /* Se face X */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding-right: 20px;
+}
+
+.faq-answer p {
+    padding-bottom: 20px;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* --- 2. MAP SECTION --- */
+.map-full {
+    width: 100%;
+    height: 450px;
+    filter: grayscale(100%); /* Harta alb-negru */
+    transition: filter 0.5s;
+}
+
+.map-full:hover {
+    filter: grayscale(0%); /* Devine color la hover */
+}
+
+.map-full iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

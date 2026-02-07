@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1011 Design Lab | Portofoliu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <section class="page-content section-padding">
+        <div class="container">
+            <h1 class="section-title">Portofoliu</h1>
+            <div class="divider"></div>
+
+            <div class="filter-menu">
+                <button class="filter-btn active" onclick="filterProjects('all')">Toate</button>
+                <button class="filter-btn" onclick="filterProjects('interior')">Interior</button>
+                <button class="filter-btn" onclick="filterProjects('arhitectura')">Arhitectură</button>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card" data-category="interior">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Interior">
+                        <div class="info-overlay">
+                            <h3>Apartament N.ORD</h3>
+                            <span class="category">Interior</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="arhitectura">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Casa">
+                        <div class="info-overlay">
+                            <h3>Casa 10</h3>
+                            <span class="category">Arhitectură</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="interior">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Loft">
+                        <div class="info-overlay">
+                            <h3>Urban Loft</h3>
+                            <span class="category">Interior</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <div id="footer-placeholder"></div>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

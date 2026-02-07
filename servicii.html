@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1011 Design Lab | Servicii</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <section class="section-padding" style="padding-top: 150px;">
+        <div class="container">
+            
+            <div class="text-center animate-block">
+                <h1 class="section-title">Servicii</h1>
+                <div class="divider"></div>
+                <p style="max-width: 700px; margin: 0 auto 80px auto; color: #666;">
+                    Abordăm fiecare proiect holistic, de la conceptul arhitectural până la ultimul detaliu de design interior. Iată cum te putem ajuta.
+                </p>
+            </div>
+
+            <div class="services-wrapper">
+
+                <div class="service-row animate-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Design Interior">
+                    </div>
+                    <div class="service-content">
+                        <h2>Design Interior</h2>
+                        <p>
+                            Transformăm spațiile în experiențe. Nu ne limităm la decorare, ci optimizăm fluxurile, lumina și materialitatea pentru a reflecta stilul tău de viață. Creăm interioare care nu se demodează.
+                        </p>
+                        
+                        <div class="service-list-title">Ce include:</div>
+                        <ul class="service-list">
+                            <li>Releveu și analiză spațiu</li>
+                            <li>Concept creativ & Moodboard</li>
+                            <li>Randări fotorealiste 3D</li>
+                            <li>Planuri tehnice (electrice, sanitare, finisaje)</li>
+                            <li>Listă de cantități și bugetare</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-row animate-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Proiectare Arhitectura">
+                    </div>
+                    <div class="service-content">
+                        <h2>Proiectare Arhitectură</h2>
+                        <p>
+                            Pentru case noi sau extinderi. Ne ocupăm de volumetrie, fațade și integrarea în context. Arhitectura noastră este minimalistă, funcțională și sustenabilă.
+                        </p>
+
+                        <div class="service-list-title">Etape de lucru:</div>
+                        <ul class="service-list">
+                            <li>Studiu de fezabilitate</li>
+                            <li>Concept Arhitectural</li>
+                            <li>Documentație pentru Avize și Autorizații (DTAC)</li>
+                            <li>Proiect Tehnic (PTh) și Detalii de Execuție (DDE)</li>
+                            <li>Coordonare cu inginerii de structură și instalații</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-row animate-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Consultanta">
+                    </div>
+                    <div class="service-content">
+                        <h2>HORECA & Comercial</h2>
+                        <p>
+                            Spațiile publice necesită o abordare diferită: ele trebuie să vândă o poveste. Proiectăm cafenele, restaurante și birouri care atrag clienți și eficientizează munca echipei.
+                        </p>
+
+                        <div class="service-list-title">Focus pe:</div>
+                        <ul class="service-list">
+                            <li>Identitate de brand transpusă în spațiu</li>
+                            <li>Optimizare flux clienți/angajați</li>
+                            <li>Selectare materiale rezistente la trafic</li>
+                            <li>Proiectare mobilier custom</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div> </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.animate-block').forEach(el => el.classList.add('is-visible'));
+            }, 300);
+        });
+    </script>
+
+</body>
+</html>

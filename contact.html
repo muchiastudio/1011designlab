@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1011 Design Lab | Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <section class="section-padding" style="padding-top: 150px;">
+        <div class="container">
+            <div class="split-layout">
+                
+                <div class="contact-info animate-block">
+                    <h1 class="section-title" style="text-align: left;">Let's Talk.</h1>
+                    <div class="divider" style="margin: 0 0 30px 0;"></div>
+                    
+                    <p style="margin-bottom: 40px; color: #666;">
+                        Ai un teren și vrei o casă? Sau un apartament care are nevoie de o nouă viață? Scrie-ne câteva detalii despre proiectul tău.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <span>Email</span>
+                            <a href="mailto:office@1011designlab.ro" class="large-link">office@1011designlab.ro</a>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span>Telefon</span>
+                            <a href="tel:+40700000000" class="large-link">+40 700 000 000</a>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Social Media</span>
+                            <div class="social-icons">
+                                <a href="#">Instagram</a>
+                                <a href="#">Facebook</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper animate-block delay-1" style="background: #f9f9f9; padding: 40px;">
+                    <form action="https://formspree.io/f/MOCKupID" method="POST">
+                        <div class="input-group">
+                            <label>Nume</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Despre Proiect</label>
+                            <textarea name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Trimite</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section animate-block">
+        <div class="container">
+            <h2 class="section-title text-center">Întrebări Frecvente</h2>
+            <div class="divider"></div>
+
+            <div class="faq-container">
+                
+                <div class="faq-item">
+                    <button class="faq-question">Care este bugetul minim pentru un proiect?</button>
+                    <div class="faq-answer">
+                        <p>Fiecare proiect este unic, însă pentru a menține standardul nostru de calitate, de obicei preluăm proiecte de design interior cu un buget de execuție începând de la 500€/mp.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Lucrați și în afara Bucureștiului?</button>
+                    <div class="faq-answer">
+                        <p>Da, realizăm proiecte în toată țara și chiar internațional. Pentru proiectele din afara Bucureștiului, vizitele pe șantier se stabilesc de comun acord, iar costurile de deplasare se facturează separat.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Cât durează faza de proiectare?</button>
+                    <div class="faq-answer">
+                        <p>În medie, un proiect complet de design interior pentru un apartament durează între 6 și 8 săptămâni, în funcție de complexitate și rapiditatea feedback-ului.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="map-full animate-block">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d182335.6321455239!2d25.954552467926214!3d44.43774006180735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f93abf3cad4f%3A0ac0d6d67c791932!2sBucharest!5e0!3m2!1sen!2sro!4v1700000000000!5m2!1sen!2sro" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        const acc = document.getElementsByClassName("faq-question");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.animate-block').forEach(el => el.classList.add('is-visible'));
+            }, 300);
+        });
+    </script>
+</body>
+</html>
