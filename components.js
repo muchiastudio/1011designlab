@@ -4,7 +4,7 @@
 
 // 1. HEADER TEMPLATE (Include si div-ul pentru Burger!)
 const headerTemplate = `
-    <header id="main-header" class="scrolled">
+    <header id="main-header">
         <div class="container nav-container">
             <a href="index.html" class="logo">1011 <span>design lab.</span></a>
             <nav>
@@ -55,7 +55,7 @@ const footerTemplate = `
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2024 1011 Design Lab. Toate drepturile rezervate.
+            &copy; 2026 1011 Design Lab. Toate drepturile rezervate.
         </div>
     </footer>
 `;

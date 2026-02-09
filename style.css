@@ -108,11 +108,13 @@ header.scrolled { color: #1a1a1a; }
     z-index: -1;
 }
 
-/* Textul din Hero */
-.hero-text {
-    position: relative;
-    z-index: 2;
-    padding: 0 20px;
+/* Titluri masive, editoriale */
+.hero-text h1 {
+    font-size: 4rem; /* Sau chiar 5rem pe desktop */
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 600; /* Subțire și mare e foarte elegant */
+    letter-spacing: -1px; /* Literele puțin mai apropiate */
 }
 
 
@@ -787,4 +789,23 @@ footer {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+@media (min-width: 900px) {
+    /* Doar pe desktop */
+    .project-card:nth-child(even) {
+        margin-top: 80px; /* Le impinge in jos pe cele pare */
+    }
+    .project-grid {
+        margin-bottom: 100px; /* Spatiu extra jos ca sa nu se taie */
+    }
+}
+
+/* Spatiu intre pozele din proiect */
+.image-stack img {
+    margin-bottom: 80px; /* Spatiu mare, aerisit */
+    display: block;
+}
+.image-stack img:last-child {
+    margin-bottom: 0; /* Ultima nu are nevoie de spatiu jos */
 }

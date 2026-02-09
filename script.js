@@ -37,28 +37,38 @@ window.initMobileMenu = function() {
 };
 
 /* =====================================================
-   2. HEADER SCROLL EFFECT
-   Face header-ul alb când scrollezi
+   2. HEADER SCROLL EFFECT (LOGICA COMPLETA)
+   Se asigura ca header-ul e corect si la incarcare, si la scroll
    ===================================================== */
-window.addEventListener('scroll', function() {
+function updateHeader() {
     const header = document.getElementById('main-header');
-    
-    if(header) {
-        // Dacă am scrolat mai mult de 50px
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+    const hasHero = document.querySelector('.hero-fullscreen'); // Verificam daca avem poza mare
+
+    if (!header) return;
+
+    // SCENARIUL 1: Am dat scroll in jos
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } 
+    // SCENARIUL 2: Suntem sus de tot
+    else {
+        if (hasHero) {
+            // Daca e Homepage (are Hero), il facem TRANSPARENT
+            header.classList.remove('scrolled');
         } else {
-            // Dacă suntem sus
-            // Verificăm dacă suntem pe o pagină cu Hero (poză mare)
-            if(document.querySelector('.hero-fullscreen')) {
-                header.classList.remove('scrolled');
-            } else {
-                // Pe pagini fără Hero, header-ul rămâne mereu alb/scrolled
-                header.classList.add('scrolled');
-            }
+            // Daca e pagina interna (nu are Hero), il fortam ALB
+            header.classList.add('scrolled');
         }
     }
-});
+}
+
+// Rulam functia cand dam scroll
+window.addEventListener('scroll', updateHeader);
+
+// DAR O RULAM SI IMEDIAT CE SE INCARCA PAGINA (Asta repara problema ta!)
+window.addEventListener('load', updateHeader);
+// Si inca o data rapid pentru siguranta (pt module)
+document.addEventListener('DOMContentLoaded', updateHeader);
 
 /* =====================================================
    3. SCROLL ANIMATIONS (Intersection Observer)
