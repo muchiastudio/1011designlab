@@ -1,8 +1,7 @@
-/* 1. IMPORT FONTURI */
+/* =========================================
+   1. IMPORT FONTURI & VARIABILE
+   ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
-
-/* 2. RESETARE GENERALA */
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
     --accent-color: #9e2a2b;
@@ -12,19 +11,26 @@
     --font-serif: 'Playfair Display', serif;
 }
 
+/* =========================================
+   2. RESETARE GENERALA
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     font-family: var(--font-main);
     background: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden; /* Fara scroll stanga-dreapta */
+    overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 img { display: block; width: 100%; }
 ul { list-style: none; }
 
-/* 3. HEADER & NAVIGATIE */
+/* =========================================
+   3. HEADER & NAVIGATIE
+   ========================================= */
 header {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -32,17 +38,16 @@ header {
     z-index: 1000;
     background: transparent;
     transition: 0.4s;
+    color: white; /* Default alb pe Hero */
 }
 
-/* Cand dam scroll devine alb */
+/* Cand dam scroll */
 header.scrolled {
     background: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 15px 0;
+    color: #1a1a1a; /* Text negru pe fundal alb */
 }
-/* Textul din meniu e alb la inceput (pe poza) si negru la scroll */
-header { color: white; }
-header.scrolled { color: #1a1a1a; }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
@@ -55,15 +60,11 @@ header.scrolled { color: #1a1a1a; }
 .nav-links a:hover { color: var(--accent-color); }
 
 /* =========================================
-   4. HERO SECTION (FIX "Dungi Albe")
+   4. HERO SECTION
    ========================================= */
-
 .hero-fullscreen {
-    /* Inaltimea ecranului */
     height: 100vh; 
-    /* Truc pentru mobil modern: dvh se adapteaza la bara de browser */
     height: 100dvh; 
-    
     width: 100%;
     position: relative;
     display: flex;
@@ -72,63 +73,53 @@ header.scrolled { color: #1a1a1a; }
     align-items: center;
     text-align: center;
     color: white;
-    
-    /* CRUCIAL: Asta taie marginile imaginii care sunt "prea mari" */
     overflow: hidden; 
-    margin: 0; padding: 0;
 }
 
-/* Imaginea de fundal */
 .hero-bg-img {
     position: absolute;
-    /* Facem imaginea MAI MARE decat ecranul (120%) ca sa acopere orice margine */
     top: -10%; left: -10%;
     width: 120%; height: 120%; 
-    
     background-size: cover;
     background-position: center;
-    z-index: -2; /* In spatele tuturor */
-    
-    /* Animatia de zoom fin */
+    z-index: -2;
     animation: zoomEffect 20s infinite alternate;
 }
 
-/* Animatia (trebuie sa fie definita ca sa mearga) */
 @keyframes zoomEffect {
     0% { transform: scale(1); }
     100% { transform: scale(1.1); }
 }
 
-/* Filtrul Negru/Gri de deasupra */
 .hero-overlay {
     position: absolute;
     top: 0; left: 0;
-    width: 100%; height: 100%; /* Acesta ramane fix pe ecran */
-    background: rgba(0,0,0,0.3); /* Intunecare fina */
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3);
     z-index: -1;
 }
 
-/* Titluri masive, editoriale */
 .hero-text h1 {
-    font-size: 4rem; /* Sau chiar 5rem pe desktop */
+    font-size: 4rem; 
     line-height: 1.1;
     margin-bottom: 30px;
-    font-weight: 600; /* Subțire și mare e foarte elegant */
-    letter-spacing: -1px; /* Literele puțin mai apropiate */
+    font-weight: 600;
+    letter-spacing: -1px;
 }
 
-
-/* 5. SECTIUNE PROIECTE (REPARATIA PENTRU IMAGINI) */
+/* =========================================
+   5. PORTOFOLIU (Carduri & Hover Premium)
+   ========================================= */
 .section-padding { padding: 100px 0; }
 .section-title { font-size: 2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; color: #1a1a1a; }
 .divider { width: 60px; height: 1px; background: #1a1a1a; margin: 0 auto 60px; }
 .text-center { text-align: center; }
 
-/* GRILA 2x2 */
+/* Grila Proiecte 2x2 */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 Coloane egale */
-    gap: 40px; /* Spatiu intre ele */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
 }
 
 .project-card {
@@ -136,25 +127,34 @@ header.scrolled { color: #1a1a1a; }
     display: block;
     width: 100%;
     text-decoration: none;
+    z-index: 10;
+    cursor: pointer;
 }
 
-/* Cutia imaginii - FIXEAZA INALTIMEA */
+/* Cutia imaginii */
 .img-wrapper {
-    height: 500px; /* Inaltime fixa obligatorie */
+    height: 500px; 
     width: 100%;
     position: relative;
-    overflow: hidden; /* Ascunde ce iese afara */
+    overflow: hidden;
 }
 
+/* ANIMATIA CINEMATICA (ZOOM OUT) */
 .img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Umple cadrul perfect fara sa deformeze */
-    transition: transform 0.6s ease;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transform: scale(1.15); /* Porneste marita */
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Miscare foarte fina */
 }
-
-/* Efect Hover */
-.project-card:hover .img-wrapper img { transform: scale(1.05); }
+/* Cand apare pe ecran (JS) */
+.project-card.is-visible .img-wrapper img {
+    transform: scale(1);
+}
+/* Hover Effect */
+.project-card:hover .img-wrapper img {
+    transform: scale(1.05);
+    transition: transform 1s ease;
+}
 
 /* Textul de pe poza */
 .info-overlay {
@@ -166,7 +166,6 @@ header.scrolled { color: #1a1a1a; }
     transform: translateY(20px);
 }
 .project-card:hover .info-overlay { opacity: 1; transform: translateY(0); }
-
 .info-overlay h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 5px; }
 .info-overlay .category { color: var(--accent-color); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
 
@@ -174,219 +173,33 @@ header.scrolled { color: #1a1a1a; }
 .link-arrow { border-bottom: 1px solid transparent; padding-bottom: 2px; font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; color: #1a1a1a;}
 .link-arrow:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
+/* OFFSET LAYOUT (Una sus, una jos pe Desktop) */
+@media (min-width: 900px) {
+    .project-card:nth-child(even) { margin-top: 80px; }
+    .project-grid { margin-bottom: 100px; }
+}
+
 /* Animatii simple */
 .animate-block { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
 .animate-block.is-visible { opacity: 1; transform: translateY(0); }
 .delay-1 { transition-delay: 0.2s; }
 
-footer { text-align: center; padding: 40px; background: #f4f4f4; margin-top: 50px; font-size: 0.8rem; color: #666; }
-
 /* =========================================
-   6. RESPONSIVE & MOBILE MENU (COD UNIFICAT)
+   6. PAGINA PROIECT INDIVIDUAL (Complex Layout)
    ========================================= */
 
-/* STIL BURGER (Butonul in sine) */
-.burger {
-    display: none; /* Ascuns pe desktop */
-    cursor: pointer;
-    z-index: 1001; /* Peste meniu */
-}
-.burger div {
-    width: 25px; height: 3px; 
-    background-color: #333; /* Linii negre default */
-    margin: 5px; 
-    transition: 0.3s;
-}
-
-/* REGULI PENTRU TELEFON SI TABLETA */
-@media screen and (max-width: 768px) {
-    
-    /* 1. Ajustari Generale */
-    .hero-text h1 { font-size: 2.5rem; }
-    .project-grid { grid-template-columns: 1fr; } /* 1 coloana la proiecte */
-    .img-wrapper { height: 400px; }
-    .nav-links { display: none; } /* Ascundem meniul desktop standard */
-
-    /* 2. Aratam Burgerul */
-    .burger { display: block; }
-
-    /* 3. Stilul Meniului Mobil (Sertarul care iese din dreapta) */
-    .nav-links {
-        position: absolute; 
-        right: 0; 
-        height: 92vh; 
-        top: 8vh;
-        background-color: #fff; /* Fundal ALB */
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        width: 60%;
-        transform: translateX(100%); /* Ascuns initial in dreapta */
-        transition: transform 0.5s ease-in;
-        z-index: 999; 
-        padding-top: 60px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    }
-    
-    /* 4. FIX CRITIC: Textul sa fie NEGRU obligatoriu */
-    .nav-links a { 
-        color: #1a1a1a !important; /* <--- Asta face textul vizibil sus */
-        font-size: 1.2rem;
-        opacity: 1;
-        margin-bottom: 30px; 
-    }
-
-    /* 5. Clasa care activeaza meniul (JS o adauga) */
-    .nav-active { 
-        transform: translateX(0%); 
-        display: flex; /* Ne asiguram ca e vizibil cand e activ */
-    }
-
-    /* 6. Animatia Burgerului (Se face X) */
-    .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
-    .toggle .line2 { opacity: 0; }
-    .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
-}
-
-/* =========================================
-   7. SECTIUNI NOI (DESPRE & CONTACT HOME)
-   ========================================= */
-
-/* Layout General Stanga-Dreapta */
-.split-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 coloane egale */
-    gap: 80px;
-    align-items: center;
-}
-
-/* Stil Imagine Despre */
-.split-image {
-    height: 500px;
-    overflow: hidden;
-}
-.split-image img {
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Buton tip text cu linie */
-.btn-line {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--text-color);
-    border-bottom: 1px solid var(--text-color);
-    padding-bottom: 5px;
-}
-.btn-line:hover {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
-}
-
-/* --- CONTACT SECTION --- */
-.contact-details { margin-top: 40px; }
-
-.detail-item { margin-bottom: 30px; }
-
-.detail-item span {
-    display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #999;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.large-link {
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-.large-link:hover { color: var(--accent-color); }
-
-.social-icons { display: flex; gap: 20px; }
-.social-icons a {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    border-bottom: 1px solid transparent;
-}
-.social-icons a:hover { border-bottom-color: var(--text-color); }
-
-/* --- FORMULAR STIL MINIMALIST --- */
-.input-group {
-    margin-bottom: 30px;
-}
-
-.input-group label {
-    display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #999;
-    margin-bottom: 10px;
-}
-
-/* Campurile sunt doar o linie jos */
-.input-group input, 
-.input-group textarea {
-    width: 100%;
-    padding: 10px 0;
-    border: none;
-    border-bottom: 1px solid #ddd;
-    background: transparent;
-    font-family: var(--font-main);
-    font-size: 1rem;
-    color: var(--text-color);
-    transition: 0.3s;
-    outline: none;
-}
-
-.input-group input:focus, 
-.input-group textarea:focus {
-    border-bottom-color: var(--accent-color);
-}
-
-.btn-submit {
-    background: var(--text-color);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 100%;
-}
-.btn-submit:hover {
-    background: var(--accent-color);
-}
-
-/* RESPONSIVE PENTRU SECTIUNILE NOI */
-@media (max-width: 900px) {
-    .split-layout {
-        grid-template-columns: 1fr; /* Una sub alta pe mobil */
-        gap: 50px;
-    }
-    .split-image { height: 350px; }
-}
-
-/* =========================================
-   STIL PROIECT VERTICAL (NOXA STYLE)
-   ========================================= */
-
-/* 1. Titlul Centrat */
+/* Header Proiect */
 .project-header-center {
     text-align: center;
     margin-bottom: 40px;
     max-width: 800px;
-    margin-left: auto; 
-    margin-right: auto;
+    margin-left: auto; margin-right: auto;
 }
 
-/* 2. Grila de Detalii (4 Coloane) */
+/* Banda Detalii (4 Coloane) */
 .meta-grid-horizontal {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 coloane egale */
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
@@ -394,147 +207,157 @@ footer { text-align: center; padding: 40px; background: #f4f4f4; margin-top: 50p
     margin-bottom: 60px;
     text-align: center;
 }
+.meta-box strong { display: block; font-size: 0.8rem; text-transform: uppercase; color: #999; margin-bottom: 5px; letter-spacing: 1px; }
+.meta-box span { font-size: 1.1rem; color: #000; font-weight: 500; }
 
-.meta-box strong {
+/* Text Descriptiv */
+.project-text-middle {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+.project-text-middle h2 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 400; }
+.project-text-middle p { font-size: 1.1rem; color: #444; line-height: 1.8; }
+
+/* --- STRUCTURA POZE (Updated & Fixed) --- */
+
+.project-section { margin-bottom: 100px; }
+
+/* 1. Poze Orizontale (Stiva) */
+.stack-large {
+    display: flex; flex-direction: column;
+    gap: 60px; /* Spatiu mare intre ele */
+}
+.stack-large img { width: 100%; height: auto; display: block; }
+
+/* 2. Grila Verticala (2 Coloane) */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50% - 50% */
+    gap: 60px; /* Spatiere generoasa stanga-dreapta */
+    width: 100%;
+}
+
+/* 3. Grila Verticala (3 Coloane) */
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+/* Stil pentru Poze Verticale (Portret) */
+.vertical-img {
+    width: 100%;
+    height: 850px; /* Inaltime fixa MARE */
+    object-fit: cover;
     display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #999;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
 }
 
-.meta-box span {
-    font-size: 1.1rem;
-    color: #000;
-    font-weight: 500;
-}
-
-/* 3. Textul Centrat (Descrierea) */
-.text-block-center {
-    max-width: 700px; /* Mai ingust pentru citire usoara */
-    margin: 0 auto 80px auto; 
-    text-align: justify;
-    font-size: 1.05rem;
-    color: #444;
-}
-
-/* 4. Imaginile (Una sub alta) */
-.image-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 40px; /* Spatiu intre poze */
-    margin-bottom: 80px;
-}
-
-/* RESPONSIVE (Pe mobil detaliile trec pe 2 randuri) */
-@media (max-width: 768px) {
-    .meta-grid-horizontal {
-        grid-template-columns: 1fr 1fr; 
-        text-align: left;
-        gap: 30px;
-    }
-}
+/* Compatibilitate veche (image-stack simplu) */
+.image-stack { display: flex; flex-direction: column; gap: 80px; margin-bottom: 80px; }
+.image-stack img { margin-bottom: 0; display: block; }
 
 /* =========================================
-   FOOTER "FAT" (Gros & Profesional)
+   7. PAGINA SERVICII (Zig-Zag)
    ========================================= */
+.services-wrapper { display: flex; flex-direction: column; gap: 120px; }
+.service-row { display: flex; align-items: center; gap: 60px; }
+.service-row:nth-child(even) { flex-direction: row-reverse; }
 
-footer {
-    background-color: #1a1a1a; /* Aproape negru */
-    color: #ffffff;
-    padding-top: 80px;
-    padding-bottom: 20px;
-    font-size: 0.9rem;
-    margin-top: 0; /* Scoatem orice margine veche */
-}
+.service-image { flex: 1; height: 500px; overflow: hidden; position: relative; }
+.service-image img { height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+.service-row:hover .service-image img { transform: scale(1.05); }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    /* 4 Coloane egale */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 40px;
-    margin-bottom: 60px;
-}
+.service-content { flex: 1; padding: 20px; }
+.service-content h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; }
+.service-content p { color: #555; margin-bottom: 30px; line-height: 1.8; }
 
-.footer-col h4 {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-    font-family: var(--font-serif);
-    font-style: italic;
-    color: var(--accent-color);
-}
+.service-list-title { font-size: 0.9rem; text-transform: uppercase; font-weight: 600; margin-bottom: 15px; color: var(--accent-color); letter-spacing: 1px; }
+.service-list { list-style: none; padding: 0; }
+.service-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: #333; font-size: 0.95rem; }
+.service-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background-color: var(--accent-color); }
 
-.footer-col p {
-    color: #999;
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
+/* =========================================
+   8. PAGINA CONTACT & FAQ
+   ========================================= */
+.split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.split-image { height: 500px; overflow: hidden; }
+.split-image img { height: 100%; object-fit: cover; }
 
-.footer-col ul li {
-    margin-bottom: 12px;
-}
+.btn-line { font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; color: var(--text-color); border-bottom: 1px solid var(--text-color); padding-bottom: 5px; }
+.btn-line:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
-.footer-col ul li a {
-    color: #bbb;
-    transition: 0.3s;
-}
+.contact-details { margin-top: 40px; }
+.detail-item { margin-bottom: 30px; }
+.detail-item span { display: block; font-size: 0.8rem; text-transform: uppercase; color: #999; letter-spacing: 1px; margin-bottom: 5px; }
+.large-link { font-size: 1.2rem; font-weight: 500; }
+.large-link:hover { color: var(--accent-color); }
+.social-icons { display: flex; gap: 20px; }
+.social-icons a { font-size: 0.9rem; text-transform: uppercase; border-bottom: 1px solid transparent; }
+.social-icons a:hover { border-bottom-color: var(--text-color); }
 
-.footer-col ul li a:hover {
-    color: var(--accent-color);
-    padding-left: 5px; /* Mica miscare la dreapta */
-}
+/* Formular */
+.input-group { margin-bottom: 30px; }
+.input-group label { display: block; font-size: 0.8rem; text-transform: uppercase; color: #999; margin-bottom: 10px; }
+.input-group input, .input-group textarea { width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #ddd; background: transparent; font-family: var(--font-main); font-size: 1rem; color: var(--text-color); transition: 0.3s; outline: none; }
+.input-group input:focus, .input-group textarea:focus { border-bottom-color: var(--accent-color); }
+.btn-submit { background: var(--text-color); color: white; border: none; padding: 15px 40px; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; cursor: pointer; transition: 0.3s; width: 100%; }
+.btn-submit:hover { background: var(--accent-color); }
 
-/* Footer Bottom (Copyright) */
-.footer-bottom {
-    border-top: 1px solid #333;
-    padding-top: 20px;
-    text-align: center;
-    color: #666;
-    font-size: 0.8rem;
-}
+/* FAQ */
+.faq-section { background-color: #fdfbf7; padding: 80px 0; }
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid #ddd; margin-bottom: 10px; }
+.faq-question { width: 100%; text-align: left; background: none; border: none; padding: 20px 0; font-family: var(--font-main); font-size: 1.1rem; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+.faq-question:hover { color: var(--accent-color); }
+.faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; }
+.faq-question.active::after { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding-right: 20px; }
+.faq-answer p { padding-bottom: 20px; color: #666; font-size: 0.95rem; line-height: 1.8; }
 
-/* Logo in Footer */
-.footer-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 20px;
-    display: block;
-}
+/* Harta */
+.map-full { width: 100%; height: 450px; filter: grayscale(100%); transition: filter 0.5s; }
+.map-full:hover { filter: grayscale(0%); }
+.map-full iframe { width: 100%; height: 100%; border: none; }
+
+/* Filter Buttons */
+.filter-menu { display: flex; justify-content: center; gap: 40px; margin-bottom: 60px; flex-wrap: wrap; }
+.filter-btn { background: transparent; border: none; font-family: var(--font-main); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; color: #888; padding-bottom: 8px; border-bottom: 2px solid transparent; transition: 0.3s; outline: none; }
+.filter-btn:hover { color: #000; }
+.filter-btn.active { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); font-weight: 500; }
+
+/* =========================================
+   9. FOOTER
+   ========================================= */
+footer { background-color: #1a1a1a; color: #ffffff; padding-top: 80px; padding-bottom: 20px; font-size: 0.9rem; margin-top: 0; }
+.footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 60px; }
+.footer-col h4 { font-size: 1.1rem; margin-bottom: 25px; font-family: var(--font-serif); font-style: italic; color: var(--accent-color); }
+.footer-col p { color: #999; margin-bottom: 15px; line-height: 1.6; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a { color: #bbb; transition: 0.3s; }
+.footer-col ul li a:hover { color: var(--accent-color); padding-left: 5px; }
+.footer-bottom { border-top: 1px solid #333; padding-top: 20px; text-align: center; color: #666; font-size: 0.8rem; }
+.footer-logo { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 20px; display: block; }
 .footer-logo span { color: var(--accent-color); font-family: var(--font-serif); font-style: italic; }
 
-/* Responsive Footer */
-@media (max-width: 900px) {
-    .footer-container {
-        grid-template-columns: 1fr 1fr; /* 2 coloane pe tableta */
-    }
-}
-@media (max-width: 600px) {
-    .footer-container {
-        grid-template-columns: 1fr; /* 1 coloana pe mobil */
-        text-align: center;
-    }
-}
+/* =========================================
+   10. RESPONSIVE / MOBILE
+   ========================================= */
+.burger { display: none; cursor: pointer; z-index: 1001; }
+.burger div { width: 25px; height: 3px; background-color: #333; margin: 5px; transition: 0.3s; }
 
-
-/* STIL BURGER (Adauga in style.css daca lipseste) */
-.burger {
-    display: none; /* Ascuns pe desktop */
-    cursor: pointer;
-}
-.burger div {
-    width: 25px; height: 3px; background-color: #333; margin: 5px; transition: 0.3s;
-}
-
-/* PE MOBIL IL ARATAM */
-@media screen and (max-width: 768px) {
-    .burger { display: block; } 
+@media screen and (max-width: 900px) {
+    /* Tableta & Mobil */
+    .hero-text h1 { font-size: 2.5rem; }
+    .project-grid { grid-template-columns: 1fr; margin-bottom: 0; }
+    .project-card:nth-child(even) { margin-top: 0; }
+    .img-wrapper { height: 400px; }
     
-    /* Meniul care aluneca */
+    .nav-links { display: none; } /* Meniu Desktop Ascuns */
+    .burger { display: block; } /* Meniu Burger Vizibil */
+
+    /* Meniu Mobil Drawer */
     .nav-links {
         position: absolute; right: 0; height: 92vh; top: 8vh;
         background-color: #fff;
@@ -543,269 +366,87 @@ footer {
         z-index: 999; padding-top: 60px;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     }
-    
-    .nav-active { transform: translateX(0%); }
-    
-    /* Animatie X */
+    .nav-links a { color: #1a1a1a !important; font-size: 1.2rem; opacity: 1; margin-bottom: 30px; }
+    .nav-active { transform: translateX(0%); display: flex; }
+
+    /* Animatie Burger */
     .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
     .toggle .line2 { opacity: 0; }
     .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+    /* Layouts Complexe Mobil */
+    .split-layout { grid-template-columns: 1fr; gap: 50px; }
+    .split-image { height: 350px; }
+    
+    .service-row, .service-row:nth-child(even) { flex-direction: column; gap: 30px; }
+    .service-image { width: 100%; height: 350px; }
+    .services-wrapper { gap: 80px; }
+
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 40px; }
+    .vertical-img { height: 500px; }
+    .meta-grid-horizontal { grid-template-columns: 1fr 1fr; text-align: left; gap: 30px; }
+    
+    .footer-container { grid-template-columns: 1fr 1fr; }
 }
 
-
-/* =========================================
-   STIL BUTOANE FILTRU (Portofoliu)
-   ========================================= */
-
-.filter-menu {
-    display: flex;
-    justify-content: center; /* Le pune pe mijloc */
-    gap: 40px; /* Spatiu generos intre ele */
-    margin-bottom: 60px;
-    flex-wrap: wrap; /* Pe mobil trec pe randul urmator daca nu incap */
-}
-
-.filter-btn {
-    background: transparent; /* Scoate fundalul gri urat */
-    border: none; /* Scoate chenarul */
-    font-family: var(--font-main);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    color: #888; /* Gri discret cand nu e selectat */
-    padding-bottom: 8px;
-    border-bottom: 2px solid transparent; /* Linie invizibila jos */
-    transition: 0.3s;
-    outline: none; /* Scoate conturul albastru la click */
-}
-
-.filter-btn:hover {
-    color: #000; /* Negru la hover */
-}
-
-/* Cand butonul e selectat (Activ) */
-.filter-btn.active {
-    color: var(--accent-color); /* Visiniu */
-    border-bottom: 2px solid var(--accent-color); /* Linie visinie jos */
-    font-weight: 500;
-}
-
-/* RESPONSIVE */
 @media (max-width: 600px) {
-    .filter-menu {
-        gap: 20px;
-    }
-    .filter-btn {
-        font-size: 0.8rem;
-    }
+    .filter-menu { gap: 20px; }
+    .filter-btn { font-size: 0.8rem; }
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
 }
+
 
 /* =========================================
-   PAGINA SERVICII (Layout Zig-Zag)
+   SWIPER GALLERY STYLES
    ========================================= */
 
-.services-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 120px; /* Spatiu mare intre servicii */
-}
-
-.service-row {
-    display: flex;
-    align-items: center; /* Centreaza vertical textul fata de poza */
-    gap: 60px;
-}
-
-/* Alterneaza directia pentru randurile pare (2, 4...) */
-.service-row:nth-child(even) {
-    flex-direction: row-reverse;
-}
-
-.service-image {
-    flex: 1; /* Ocupa jumatate din spatiu */
-    height: 500px;
-    overflow: hidden;
-    position: relative;
-}
-
-.service-image img {
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s ease;
-}
-/* Efect fin de zoom la hover pe poza */
-.service-row:hover .service-image img {
-    transform: scale(1.05);
-}
-
-.service-content {
-    flex: 1; /* Ocupa cealalta jumatate */
-    padding: 20px;
-}
-
-.service-content h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.service-content p {
-    color: #555;
-    margin-bottom: 30px;
-    line-height: 1.8;
-}
-
-/* Lista "Ce include" */
-.service-list-title {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--accent-color);
-    letter-spacing: 1px;
-}
-
-.service-list {
-    list-style: none;
-    padding: 0;
-}
-
-.service-list li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    color: #333;
-    font-size: 0.95rem;
-}
-
-/* Liniuta stilizata in loc de bulina clasica */
-.service-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px; /* Aliniat cu mijlocul textului */
-    width: 8px;
-    height: 1px;
-    background-color: var(--accent-color);
-}
-
-/* RESPONSIVE: Pe telefon devine o singura coloana */
-@media (max-width: 900px) {
-    .service-row, .service-row:nth-child(even) {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .service-image {
-        width: 100%;
-        height: 350px;
-    }
-    .services-wrapper {
-        gap: 80px;
-    }
-}
-
-/* =========================================
-   ELEMENTE EXTRA CONTACT (FAQ & Harta)
-   ========================================= */
-
-/* --- 1. FAQ SECTION --- */
-.faq-section {
-    background-color: #fdfbf7; /* Un crem foarte deschis */
-    padding: 80px 0;
-}
-
-.faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.faq-item {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-}
-
-.faq-question {
+/* Dimensiunea Sliderului */
+.swiper {
     width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 20px 0;
-    font-family: var(--font-main);
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
+    height: 600px; /* Inaltime fixa generoasa */
+    padding-bottom: 50px; /* Loc pentru punctele de jos */
+}
+
+/* Fiecare Slide */
+.swiper-slide {
+    text-align: center;
+    background: #fff;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    transition: 0.3s;
-}
-
-.faq-question:hover {
-    color: var(--accent-color);
-}
-
-/* Semnul plus (+) care se roteste */
-.faq-question::after {
-    content: '+';
-    font-size: 1.5rem;
-    font-weight: 300;
-    transition: transform 0.3s ease;
-}
-
-.faq-question.active::after {
-    transform: rotate(45deg); /* Se face X */
-}
-
-.faq-answer {
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    padding-right: 20px;
 }
 
-.faq-answer p {
-    padding-bottom: 20px;
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.8;
-}
-
-/* --- 2. MAP SECTION --- */
-.map-full {
-    width: 100%;
-    height: 450px;
-    filter: grayscale(100%); /* Harta alb-negru */
-    transition: filter 0.5s;
-}
-
-.map-full:hover {
-    filter: grayscale(0%); /* Devine color la hover */
-}
-
-.map-full iframe {
+/* Imaginea din slide */
+.swiper-slide img {
+    display: block;
     width: 100%;
     height: 100%;
-    border: none;
+    object-fit: cover; /* Taie marginile ca sa umple perfect */
+    transition: transform 0.5s ease;
+    cursor: grab; /* Arata manuta de "trage" */
 }
 
-@media (min-width: 900px) {
-    /* Doar pe desktop */
-    .project-card:nth-child(even) {
-        margin-top: 80px; /* Le impinge in jos pe cele pare */
-    }
-    .project-grid {
-        margin-bottom: 100px; /* Spatiu extra jos ca sa nu se taie */
-    }
+/* Sageata Dreapta */
+.swiper-button-next {
+    color: var(--accent-color) !important; /* Culoarea Visinie */
+    transform: scale(0.7); /* Mai fine */
 }
 
-/* Spatiu intre pozele din proiect */
-.image-stack img {
-    margin-bottom: 80px; /* Spatiu mare, aerisit */
-    display: block;
+/* Sageata Stanga */
+.swiper-button-prev {
+    color: var(--accent-color) !important;
+    transform: scale(0.7);
 }
-.image-stack img:last-child {
-    margin-bottom: 0; /* Ultima nu are nevoie de spatiu jos */
+
+/* Punctele de jos (Pagination) */
+.swiper-pagination-bullet-active {
+    background-color: var(--accent-color) !important;
+}
+
+/* Responsive pe telefon */
+@media (max-width: 768px) {
+    .swiper {
+        height: 400px; /* Mai mic pe mobil */
+    }
 }

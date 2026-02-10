@@ -160,3 +160,51 @@ window.addEventListener('load', () => {
         }
     }, 500);
 });
+
+
+/* =========================================
+   INITIALIZARE SWIPER GALLERY
+   ========================================= */
+// Verificam daca exista slider in pagina inainte sa rulam codul
+if (document.querySelector('.mySwiper')) {
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1, // Pe mobil arata 1
+        spaceBetween: 30, // Spatiu intre ele
+        loop: true, // Se invarte infinit
+        grabCursor: true, // Cursor de "trage"
+        
+        // Navigare (Sageti)
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        
+        // Puncte jos
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+
+        // Setari pentru ecrane mai mari
+        breakpoints: {
+            768: {
+                slidesPerView: 2, // Pe tableta: 2 poze
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 3, // Pe desktop: 3 poze
+                spaceBetween: 40,
+            },
+        },
+    });
+}
+
+/* =========================================
+   ACTIVARE LIGHTBOX (GLIGHTBOX)
+   ========================================= */
+const lightbox = GLightbox({
+    selector: '.glightbox', // Cauta elementele cu clasa asta
+    touchNavigation: true,  // Swipe pe mobil in modul full screen
+    loop: true,             // Se invarte infinit
+    zoomable: true          // Permite zoom pe poza
+});
