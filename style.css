@@ -450,3 +450,98 @@ footer { background-color: #1a1a1a; color: #ffffff; padding-top: 80px; padding-b
         height: 400px; /* Mai mic pe mobil */
     }
 }
+
+/* FIX 1: Centrare Titlu Portofoliu */
+.portfolio-header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 100px; /* Sa nu intre sub meniu */
+}
+
+.portfolio-header h1 {
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+/* FIX 2: Fortare 4 coloane pe orice ecran (Mobil inclus) */
+@media (max-width: 900px) {
+    .meta-grid-horizontal {
+        /* Fortam 4 coloane si pe telefon */
+        grid-template-columns: repeat(4, 1fr) !important; 
+        gap: 5px !important; /* Spatiu foarte mic intre ele */
+        padding: 20px 0 !important;
+        text-align: center !important; /* Totul centrat */
+    }
+
+    /* Micsoram textul ca sa incapa fizic pe ecran */
+    .meta-box strong {
+        font-size: 0.6rem !important; /* Eticheta (ex: Locatie) foarte mica */
+        letter-spacing: 0px !important;
+    }
+    
+    .meta-box span {
+        font-size: 0.75rem !important; /* Raspunsul putin mai mare */
+        line-height: 1.2;
+        display: block; /* Sa curga textul daca e lung */
+        word-wrap: break-word; /* Sa nu iasa din ecran */
+    }
+}
+
+/* FIX 3: Navigare Proiecte - O SINGURA LINIE PE MOBIL */
+
+.project-nav {
+    border-top: 1px solid #ddd; 
+    padding: 30px 30px; 
+    margin-bottom: 50px; 
+    
+    /* Le punem una langa alta */
+    display: flex; 
+    justify-content: space-between; /* Stanga - Mijloc - Dreapta */
+    align-items: center;
+    width: 100%;
+}
+
+/* Stil default (Desktop) */
+.project-nav a {
+    font-size: 0.9rem;
+    white-space: nowrap; /* Sa nu se rupa textul pe 2 randuri */
+}
+
+/* Stil pentru Mobil (Ecran mic) */
+@media (max-width: 768px) {
+    .project-nav {
+        flex-direction: row !important; /* FORTAM linia orizontala */
+        gap: 5px; /* Spatiu foarte mic intre ele */
+        padding: 60px 60px;
+    }
+    
+    .project-nav a {
+        font-size: 0.8rem !important; /* Scris mic (aprox 10px) */
+        letter-spacing: 0px !important; /* Fara spatiu intre litere */
+        border-bottom-width: 1px; /* Linie fina */
+    }
+
+    /* Ajustare fina pentru butonul din mijloc */
+    .project-nav .filter-btn {
+        font-weight: 700; /* Il facem putin mai gros sa iasa in evidenta */
+    }
+}
+
+/* Pentru ecrane FOARTE mici (iPhone SE / Mini) */
+@media (max-width: 360px) {
+    .project-nav a {
+        font-size: 0.55rem !important; /* Si mai mic daca e nevoie */
+    }
+}
+
+/* Spatiere automata intre paragrafe */
+.project-text-middle p {
+    margin-bottom: 30px; /* <--- Mărește sau micșorează numărul ăsta */
+}
+
+/* Scoatem spatiul de la ultimul paragraf (ca sa nu fie gaura jos) */
+.project-text-middle p:last-child {
+    margin-bottom: 0;
+}
