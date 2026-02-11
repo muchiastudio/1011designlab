@@ -545,3 +545,70 @@ footer { background-color: #1a1a1a; color: #ffffff; padding-top: 80px; padding-b
 .project-text-middle p:last-child {
     margin-bottom: 0;
 }
+
+
+/* =========================================
+   DESIGN NOU: SECTIUNE PROCES (CUM LUCRAM)
+   ========================================= */
+
+/* Grila Principala */
+.process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 coloane egale */
+    column-gap: 60px; /* Spatiu mare intre coloane */
+    row-gap: 80px; /* Spatiu mare intre randuri */
+}
+
+/* Fiecare pas (Cutia) */
+.process-item {
+    border-top: 1px solid #ddd; /* Linia fina de arhitect deasupra */
+    padding-top: 30px; /* Spatiu dintre linie si text */
+    transition: 0.3s;
+}
+
+/* Numerele Mari (01, 02...) */
+.process-number {
+    display: block;
+    font-family: var(--font-serif); /* Fontul elegant (Playfair) */
+    font-size: 3.5rem; /* Foarte mare */
+    color: var(--accent-color); /* Visiniu */
+    opacity: 0.3; /* Transparent, ca un watermark */
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+/* Titlul pasului (Brief, Concept etc.) */
+.process-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Descrierea */
+.process-item p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1rem;
+    max-width: 90%; /* Sa nu fie textul prea lat */
+}
+
+/* Efect Hover (Cand pui mouse-ul) */
+.process-item:hover {
+    border-top-color: var(--accent-color); /* Linia se face visinie */
+}
+.process-item:hover .process-number {
+    opacity: 1; /* Numarul devine plin la culoare */
+}
+
+/* RESPONSIVE (Mobil - Se fac o singura coloana) */
+@media (max-width: 768px) {
+    .process-grid {
+        grid-template-columns: 1fr; /* O singura coloana */
+        gap: 50px;
+    }
+    .process-item p {
+        max-width: 100%;
+    }
+}

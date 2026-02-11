@@ -44,7 +44,7 @@ const footerTemplate = `
             <div class="footer-col">
                 <h4>Contact</h4>
                 <p>București, România</p>
-                <p style="color:var(--accent-color);">office@1011designlab.ro</p>
+                <p style="color:var(--accent-color);">hello@1011designlab.com</p>
             </div>
             <div class="footer-col">
                 <h4>Social</h4>
@@ -55,7 +55,7 @@ const footerTemplate = `
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 1011 Design Lab. Toate drepturile rezervate.
+            &copy; 2026 1011 Design Lab. Toate drepturile rezervate. Powered by MUCHIA / Studio.
         </div>
     </footer>
 `;
