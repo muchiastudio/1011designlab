@@ -44,13 +44,15 @@ const footerTemplate = `
             <div class="footer-col">
                 <h4>Contact</h4>
                 <p>București, România</p>
-                <p style="color:var(--accent-color);">hello@1011designlab.com</p>
+                <p><a href="tel:+40749669380" class="footer-link">+40 749 669 380</a></p>
+                <p><a href="mailto:hello@1011designlab.com" class="footer-link email-link">hello@1011designlab.com</a></p>
             </div>
             <div class="footer-col">
                 <h4>Social</h4>
                 <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/1011designlab/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@1011designlab" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                    <li><a href="https://www.facebook.com/1011designlab/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
                 </ul>
             </div>
         </div>

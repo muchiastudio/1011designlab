@@ -334,6 +334,10 @@ footer { background-color: #1a1a1a; color: #ffffff; padding-top: 80px; padding-b
 .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 60px; }
 .footer-col h4 { font-size: 1.1rem; margin-bottom: 25px; font-family: var(--font-serif); font-style: italic; color: var(--accent-color); }
 .footer-col p { color: #999; margin-bottom: 15px; line-height: 1.6; }
+.footer-col p a.footer-link { color: #999; transition: 0.3s; }
+.footer-col p a.footer-link:hover { color: var(--accent-color); }
+.footer-col p a.email-link { color: var(--accent-color); }
+.footer-col p a.email-link:hover { color: #ffffff; }
 .footer-col ul li { margin-bottom: 12px; }
 .footer-col ul li a { color: #bbb; transition: 0.3s; }
 .footer-col ul li a:hover { color: var(--accent-color); padding-left: 5px; }
