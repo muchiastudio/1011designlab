@@ -208,3 +208,77 @@ const lightbox = GLightbox({
     loop: true,             // Se invarte infinit
     zoomable: true          // Permite zoom pe poza
 });
+
+
+/* =========================================
+   11. EXPEDIERE FORMULAR VIA AJAX (FORMSPREE)
+   ========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const contactForms = document.querySelectorAll('form[action*="formspree.io"]');
+    
+    contactForms.forEach(form => {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.btn-submit');
+            const originalBtnText = submitBtn ? submitBtn.textContent : "Trimite";
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Se trimite...";
+            }
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Mesaj de succes premium în concordanță cu design-ul site-ului
+                    form.innerHTML = `
+                        <div class="form-status-message success animate-block is-visible" style="text-align: center; padding: 40px 0; opacity: 1; transform: translateY(0);">
+                            <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 20px; font-family: var(--font-serif);">Mulțumim!</div>
+                            <h3 style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 500; color: var(--text-color);">Mesaj trimis cu succes.</h3>
+                            <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">Te vom contacta în cel mai scurt timp pentru a discuta despre proiectul tău.</p>
+                        </div>
+                    `;
+                } else {
+                    const data = await response.json();
+                    if (data && data.errors) {
+                        throw new Error(data.errors.map(error => error.message).join(", "));
+                    } else {
+                        throw new Error("A apărut o problemă la trimiterea formularului.");
+                    }
+                }
+            } catch (error) {
+                console.error("Formspree Error:", error);
+                
+                // Afișăm un mesaj de eroare prietenos sub formular
+                let errorContainer = form.querySelector('.form-error-container');
+                if (!errorContainer) {
+                    errorContainer = document.createElement('div');
+                    errorContainer.className = 'form-error-container';
+                    errorContainer.style.color = 'var(--accent-color)';
+                    errorContainer.style.marginTop = '20px';
+                    errorContainer.style.fontSize = '0.9rem';
+                    errorContainer.style.textAlign = 'center';
+                    errorContainer.style.fontWeight = '500';
+                    form.appendChild(errorContainer);
+                }
+                
+                errorContainer.textContent = "A apărut o eroare: " + error.message;
+                
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            }
+        });
+    });
+});
